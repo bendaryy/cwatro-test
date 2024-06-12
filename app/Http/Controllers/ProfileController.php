@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -20,10 +21,16 @@ class ProfileController extends Controller
     }
 
 
+    public function password()
+    {
+
+        return view('updatePassword');
+    }
+
     public function update(Request $request)
     {
         $request->validate([
-            'name'  => 'required',
+            'name' => 'required',
             'email' => 'required|email',
         ]);
 
@@ -33,10 +40,29 @@ class ProfileController extends Controller
 
         $user->update($input);
 
-        session()->flash('message', 'Updated Sucessfully');
+        session()->flash('message', 'تم التعديل بنجاح');
 
         return redirect()->back();
     }
 
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            "old_password" => "required|min:6|max:100",
+            "new_password" => "required|min:6|max:100",
+            "confirm_password" => "required|same:new_password",
+        ]);
+        $current_user = auth()->user();
+        if (Hash::check($request->old_password, $current_user->password)) {
+
+            $current_user->update([
+                'password' => Hash::make($request->new_password),
+            ]);
+            return redirect()->back()->with('message', 'تم تغيير الباسورد بنجاح');
+        } else {
+            return redirect()->back()->with('error', 'الباسورد الحالى غير مطابق');
+        }
+
+    }
 
 }

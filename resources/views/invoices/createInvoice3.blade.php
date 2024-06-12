@@ -406,6 +406,36 @@
                                 </div>
 
 
+                                    <div class="row">
+
+
+
+
+                                             <div class="col-6">
+                                        <label for="payment-method-country" class="form-label">
+                                            اختر العملة الأجنبية</label>
+                                        <div class="">
+                                            <select name="currencySold" class="form-select">
+                                                    <option value="USD">الدولار</option>
+                                                    <option value="EUR">اليورو</option>
+                                             </select>
+                                        </div>
+                                    </div>
+
+
+
+                                      <div class="col-6">
+                                            <label for="currencyExchangeRate" class="form-label">سعر العملة الأجنبية
+                                                بالمصرى الان</label>
+                                                <input class="form-control" step="any" type="number"
+                                                step="any" name="currencyExchangeRate"
+                                                id="currencyExchangeRate"
+                                                onkeyup="bigOne()"
+                                                onmouseover="bigOne()">
+                                            </div>
+
+                                        </div>
+
 
 
 
@@ -414,7 +444,7 @@
                                     <div class="col-6">
                                         <label class="form-label"> @lang('site.Date Time Issued')</label>
                                         <div class="">
-                                            <input type="date" value="{{ date(' Y-m-d') }}"
+                                            <input type="date" value="{{ date('Y-m-d') }}"
                                                 class="form-control text-center" name="date" placeholder="">
                                         </div>
                                     </div>
@@ -580,22 +610,14 @@
                                                                 بالدولار</label>
                                                             <input class="form-control" step="any" type="number"
                                                                 step="any" name="amountSold[]" id="amountSold"
-                                                                onkeyup="DollarExchangeRate(this.value)"
-                                                                onmouseover="DollarExchangeRate(this.value)">
+                                                                onkeyup="bigOne()"
+                                                                onmouseover="bigOne()">
 
                                                         </div>
 
 
 
-                                                        <div class="col-md-3">
-                                                            <label for="linePrice" class="form-label">سعر الدولار
-                                                                بالمصرى الان</label>
-                                                            <input class="form-control" step="any" type="number"
-                                                                step="any" name="currencyExchangeRate[]"
-                                                                id="currencyExchangeRate"
-                                                                onkeyup="DollarExchangeCurrency(this.value)"
-                                                                onmouseover="DollarExchangeCurrency(this.value)">
-                                                        </div>
+
 
 
 
@@ -604,8 +626,8 @@
                                                                 المصرى</label>
                                                             <input class="form-control" step="any" type="number"
                                                                 step="any" name="amountEGP[]" id="amountEGP" readonly
-                                                                onkeyup="operation(this.value),findTotalSalesAmount();;"
-                                                                onmouseover="operation(this.value),findTotalSalesAmount();;">
+                                                                onkeyup="bigOne()"
+                                                                onmouseover="bigOne()">
                                                         </div>
 
 
@@ -613,8 +635,8 @@
                                                             <label class="form-label">@lang("site.quantity")</label>
                                                             <input class="form-control" type="number" step="any"
                                                                 name="quantity[]" id="quantity"
-                                                                onkeyup="proccess(this.value),findTotalSalesAmount();"
-                                                                onmouseover="proccess(this.value),findTotalSalesAmount();">
+                                                                onkeyup="bigOne()"
+                                                                onmouseover="bigOne()">
                                                         </div>
 
 
@@ -642,8 +664,8 @@
                                                                 class="form-label">@lang("site.Tax_added")</label>
                                                             <input type="number" class="form-control" name="rate[]"
                                                                 id="rate" class="form-control form-control-sm"
-                                                                onkeyup="findTotalt2Amount()"
-                                                                onmouseover="findTotalt2Amount()" placeholder="@lang("
+                                                                onkeyup="bigOne()"
+                                                                onmouseover="bigOne()" placeholder="@lang("
                                                                 site.Tax_added")">
                                                         </div>
                                                     </div>
@@ -666,8 +688,8 @@
                                                             <label for="lineTaxT4" class="form-label">@lang("site.Tax
                                                                 t4 Value")</label>
                                                             <input type="number" class="form-control" name="t4rate[]"
-                                                                id="t4rate" onkeyup="findTotalt4Amount()"
-                                                                onmouseover="findTotalt4Amount()" placeholder="@lang("
+                                                                id="t4rate" onkeyup="bigOne()"
+                                                                onmouseover="bigOne()" placeholder="@lang("
                                                                 site.Tax t4 Value")">
                                                         </div>
                                                     </div>
@@ -676,19 +698,19 @@
                                                             <label for="lineDiscount" class="form-label">الخصم</label>
 
                                                             <input class="form-control" placeholder=" @lang("
-                                                                site.Discount")" type="number" step="any"
+                                                                site.Discount")" value="0" type="number" step="any"
                                                                 name="discountAmount[]" id="discountAmount"
-                                                                onkeyup="discount(this.value),findTotalDiscountAmount(),findTotalNetAmount(),findTotalt4Amount(),findTotalt2Amount()"
-                                                                onmouseover="discount(this.value),findTotalDiscountAmount(),findTotalNetAmount(),findTotalt4Amount(),findTotalt2Amount()">
+                                                                onkeyup="bigOne()"
+                                                                onmouseover="bigOne()">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="lineDiscountAfterTax" class="form-label">خصم
                                                                 الأصناف
                                                             </label>
                                                             <input type="number" class="form-control" step="any"
-                                                                name="itemsDiscount[]" id="itemsDiscount"
-                                                                onkeyup="itemsDiscountValue(this.value),findTotalAmount(),findTotalItemsDiscountAmount()"
-                                                                onmouseover="itemsDiscountValue(this.value),findTotalAmount(),findTotalItemsDiscountAmount()"
+                                                                name="itemsDiscount[]" value="0" id="itemsDiscount"
+                                                                onkeyup="bigOne()"
+                                                                onmouseover="bigOne()"
                                                                 placeholder="@lang(" site.Discount_After_Tax")">
                                                         </div>
                                                     </div>
@@ -702,8 +724,8 @@
                                                                     ضريبة القيمة المضافة</label>
                                                                 <input type="number" readonly class="form-control"
                                                                     step="any" name="t2Amount[]" id="t2"
-                                                                    onkeyup="findTotalt2Amount()"
-                                                                    onmouseover="findTotalt2Amount()" placeholder="@lang("
+                                                                    onkeyup="bigOne()"
+                                                                    onmouseover="bigOne()" placeholder="@lang("
                                                                     site.Total Taxable Fees")">
                                                             </div>
                                                             <div class="col-md-6">
@@ -711,8 +733,8 @@
                                                                     ضريبة المنبع</label>
                                                                 <input type="number" class="form-control"
                                                                     name="t4Amount[]" readonly id="t4Amount"
-                                                                    onkeyup="findTotalt4Amount()"
-                                                                    onmouseover="findTotalt4Amount()" placeholder="@lang("
+                                                                    onkeyup="bigOne()"
+                                                                    onmouseover="bigOne()" placeholder="@lang("
                                                                     site.Total T4 Amount")">
                                                             </div>
                                                         </div>
@@ -729,8 +751,8 @@
                                                                     class="form-label">@lang("site.Net Total")</label>
                                                                 <input type="number" class="form-control" readonly
                                                                     name="netTotal[]" id="netTotal"
-                                                                    onkeyup="nettotal(this.value),findTotalNetAmount()"
-                                                                    onmouseover="nettotal(this.value),findTotalNetAmount()"
+                                                                    onkeyup="bigOne()"
+                                                                    onmouseover="bigOne()"
                                                                     placeholder="@lang(" site.Net Total")">
                                                             </div>
                                                         </div>
@@ -741,8 +763,8 @@
                                                                     class="form-label">@lang("site.lineTotal")</label>
                                                                 <input type="number" class="form-control"
                                                                     name="totalItemsDiscount[]" readonly
-                                                                    id="totalItemsDiscount" onkeyup="findTotalAmount()"
-                                                                    onmouseover="findTotalAmount()" placeholder="@lang("
+                                                                    id="totalItemsDiscount" onkeyup="bigOne()"
+                                                                    onmouseover="bigOne()" placeholder="@lang("
                                                                     site.lineTotal")">
                                                             </div>
                                                         </div>
@@ -777,40 +799,40 @@
                                             <label for="findTotalt2Amount" class="form-label">إجمالى ضريبة القيمة
                                                 المضافة</label>
                                             <input type="number" class="form-control" step="any" name="totalt2Amount"
-                                                onmouseover="findTotalt2Amount()" onkeyup="findTotalt2Amount()" readonly
+                                                onmouseover="bigOne()" onkeyup="bigOne()" readonly
                                                 id="totalt2Amount">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="findTotalt4Amount" class="form-label">إجمالى ضريبة
                                                 المنبع</label>
                                             <input class="form-control" type="number" step="any" name="totalt4Amount"
-                                                onmouseover="findTotalt4Amount()" onkeyup="findTotalt4Amount()" readonly
+                                                onmouseover="bigOne()" onkeyup="bigOne()" readonly
                                                 id="totalt4Amount">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="salesTotal" class="form-label">إجمالى المبيعات</label>
                                             <input type="number" class="form-control" name="totalDiscountAmount"
-                                                onmouseover="findTotalDiscountAmount()" onkeyup="findTotalDiscountAmount()"
+                                                onmouseover="bigOne()" onkeyup="bigOne()"
                                                 readonly id="totalDiscountAmount">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="netTotal" class="form-label">الإجمالى الصافى</label>
                                             <input type="number" class="form-control" step="any" name="TotalSalesAmount"
-                                                onmouseover="findTotalSalesAmount()" onkeyup="findTotalSalesAmount()"
+                                                onmouseover="bigOne()" onkeyup="bigOne()"
                                                 readonly id="TotalSalesAmount">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="findTotalNetAmount" class="form-label">إجمالى المبلغ
                                                 الصافى</label>
                                             <input type="number" step="any" class="form-control" name="TotalNetAmount"
-                                                onmouseover="findTotalNetAmount()" onkeyup="findTotalNetAmount()" readonly
+                                                onmouseover="bigOne()" onkeyup="bigOne()" readonly
                                                 id="TotalNetAmount">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="TotalDiscount" class="form-label">إجمالى الخصم</label>
                                             <input type="number" step="any" name="totalItemsDiscountAmount"
-                                                class="form-control" onmouseover="findTotalItemsDiscountAmount()"
-                                                onkeyup="findTotalItemsDiscountAmount()" readonly
+                                                class="form-control" onmouseover="bigOne()"
+                                                onkeyup="bigOne()" readonly
                                                 id="totalItemsDiscountAmount">
                                         </div>
 
@@ -819,8 +841,8 @@
                                             <label for="ExtraInvoiceDiscount" class="form-label">الخصم الإضافى (مابعد
                                                 الضريبة) </label>
                                             <input type="number" class="form-control" step="any" name="ExtraDiscount"
-                                                id="ExtraDiscount" onkeyup="Extradiscount(this.value),findTotalAmount()"
-                                                onmouseover="Extradiscount(this.value),findTotalAmount()" required>
+                                                id="ExtraDiscount" onkeyup="bigOne()"
+                                                onmouseover="bigOne()" required>
                                         </div>
 
 
@@ -832,12 +854,19 @@
                                         </div>
 
 
-                                        <div class="col-12">
-                                            <label for="findTotalAmount" class="form-label">الإجمالى بعد الخصم
+                                        <div class="col-6">
+                                            <label for="findTotalAmount" class="form-label">الإجمالى بعد الخصم بالجنيه
                                             </label>
                                             <input type="number" class="form-control"
                                                 style="color: red;font-weight: bold;font-size: 20px" type="number"
                                                 step="any" name="totalAmount2" readonly id="totalAmount2">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="findTotalAmount" class="form-label">الإجمالى بعد الخصم بالدولار
+                                            </label>
+                                            <input type="number" class="form-control"
+                                                style="color: red;font-weight: bold;font-size: 20px" type="number"
+                                                step="any"  readonly id="totalAmount2Dollar">
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
@@ -1075,148 +1104,304 @@
     <script id="test123">
         // this is invoice 1
 
-        function DollarExchangeCurrency(value) {
-            // value of currency exchange rate
-            var x, y, z
+
+
+         function bigOne() {
+
+            //for itemData
 
             var dollar = document.getElementById("amountSold").value;
-            var x = value * dollar;
+            var  currency = document.getElementById('currencyExchangeRate').value
+            var x = currency * dollar;
             document.getElementById("amountEGP").value = x.toFixed(5);
-        }
-
-        function DollarExchangeRate(value) {
-            // value of currency exchange rate
-            var x, y, z
-
-            var dollar = document.getElementById('currencyExchangeRate').value;
-            var x = value * dollar;
-            document.getElementById('amountEGP').value = x.toFixed(5);
-        }
-
-        function operation(value) {
-            var x, y, z;
-            var quantity = document.getElementById("quantity").value;
-            x = value * quantity;
-            document.getElementById("salesTotal").value = x.toFixed(5);
-        };
 
 
 
-        function proccess(value) {
-            var x, y, z;
-            var amounEGP = document.getElementById("amountEGP").value;
-            y = value * amounEGP;
-            document.getElementById("salesTotal").value = y.toFixed(5);
-        };
+            var dollar2 = document.getElementById('currencyExchangeRate').value;
+            var amountsold = document.getElementById('amountSold').value;
+            var x2 = amountsold * dollar2;
+            document.getElementById('amountEGP').value = x2.toFixed(5);
 
-        function discount(value) {
-            var salesTotal, netTotal, z, t2valueEnd, t1Value, rate, t4rate, t4Amount;
-            salesTotal = document.getElementById("salesTotal").value;
-            netTotal = salesTotal - value;
-            netTotalEnd = document.getElementById("netTotal").value = netTotal.toFixed(5);
-            rate = document.getElementById("rate").value;
-            t4rate = document.getElementById("t4rate").value;
-            t2valueEnd = document.getElementById("t2").value =
-                ((netTotalEnd * rate) / 100).toFixed(5);
-            t4Amount = document.getElementById("t4Amount").value =
-                ((netTotal * t4rate) / 100).toFixed(5);
-        }
 
-        function itemsDiscountValue(value) {
-            var x, netTotal, t1amount, t2amount, t4Amount;
-            netTotal = document.getElementById("netTotal").value;
-            t2amount = document.getElementById("t2").value;
-            t4Amount = document.getElementById("t4Amount").value;
-            x =
-                parseFloat(netTotal) +
-                parseFloat(t2amount) -
-                parseFloat(t4Amount) -
-                parseFloat(value);
-            document.getElementById("totalItemsDiscount").value = x.toFixed(5);
-        }
 
-        function Extradiscount(value) {
-            var totalDiscount, x;
-            totalDiscount = document.getElementById("totalAmount").value;
-            x = totalDiscount - value;
-            document.getElementById("totalAmount2").value = x.toFixed(5);
-        }
+            var quantity = document.getElementById("quantity");
+            var amounEGP = document.getElementById("amountEGP");
+            var salesTotal = document.getElementById("salesTotal");
+            var netTotal = document.getElementById("netTotal");
+            var discount = document.getElementById('discountAmount');
+            var T2rate = document.getElementById("rate");
+            var t2valueEnd = document.getElementById("t2");
+            var T4rate = document.getElementById("t4rate");
+            var t4Amount = document.getElementById("t4Amount");
+            var totalItemDiscount = document.getElementById("totalItemsDiscount");
+            var itemsDiscount = document.getElementById("itemsDiscount");
+            var allSalesTotal = salesTotal.value = (quantity.value * amounEGP.value).toFixed(2);
+            var allNetTotal = netTotal.value = (salesTotal.value - discount.value).toFixed(2);
 
-        function findTotalDiscountAmount() {
-            var arr = document.getElementsByName("discountAmount[]");
-            var tot = 0;
-            for (var i = 0; i < arr.length; i++) {
-                if (parseFloat(arr[i].value)) {
-                    tot += parseFloat(arr[i].value);
+
+            t2valueEnd.value = ((allNetTotal * T2rate.value) / 100).toFixed(2);
+            t4Amount.value = ((allNetTotal * t4rate.value) / 100).toFixed(2);
+
+            totalItemDiscount.value = (parseFloat(netTotal.value) + parseFloat(t2valueEnd.value) - parseFloat(t4Amount.value) - parseFloat(itemsDiscount.value)).toFixed(2)
+
+
+
+
+
+            // for total discount amount
+            var discountAmount = document.getElementsByName("discountAmount[]");
+            var tot1 = 0;
+            for (var i = 0; i < discountAmount.length; i++) {
+                if (parseFloat(discountAmount[i].value)) {
+                    tot1 += parseFloat(discountAmount[i].value);
                 }
             }
-            document.getElementById("totalDiscountAmount").value = tot.toFixed(5);
-        }
+            document.getElementById("totalDiscountAmount").value = tot1.toFixed(2);
 
-        function findTotalSalesAmount() {
-            var arr = document.getElementsByName("salesTotal[]");
-            var tot = 0;
-            for (var i = 0; i < arr.length; i++) {
-                if (parseFloat(arr[i].value)) {
-                    tot += parseFloat(arr[i].value);
+
+
+            // for total sales amount
+
+            var TotalSalesAmount = document.getElementsByName("salesTotal[]");
+            var tot2 = 0;
+            for (var i = 0; i < TotalSalesAmount.length; i++) {
+                if (parseFloat(TotalSalesAmount[i].value)) {
+                    tot2 += parseFloat(TotalSalesAmount[i].value);
                 }
             }
-            document.getElementById("TotalSalesAmount").value = tot.toFixed(5);
-        }
+            document.getElementById("TotalSalesAmount").value = tot2.toFixed(2);
 
-        function findTotalNetAmount() {
-            var arr = document.getElementsByName("netTotal[]");
-            var tot = 0;
-            for (var i = 0; i < arr.length; i++) {
-                if (parseFloat(arr[i].value)) {
-                    tot += parseFloat(arr[i].value);
+            // find net total
+
+            var AllNetTotal = document.getElementsByName("netTotal[]");
+            var tot3 = 0;
+            for (var i = 0; i < AllNetTotal.length; i++) {
+                if (parseFloat(AllNetTotal[i].value)) {
+                    tot3 += parseFloat(AllNetTotal[i].value);
                 }
             }
-            document.getElementById("TotalNetAmount").value = tot.toFixed(5);
-        }
+            document.getElementById("TotalNetAmount").value = tot3.toFixed(2);
 
-        function findTotalt4Amount() {
-            var arr = document.getElementsByName("t4Amount[]");
-            var tot = 0;
-            for (var i = 0; i < arr.length; i++) {
-                if (parseFloat(arr[i].value)) {
-                    tot += parseFloat(arr[i].value);
+            // all t4 amount
+
+            var Allt4Amount = document.getElementsByName("t4Amount[]");
+            var tot4 = 0;
+            for (var i = 0; i < Allt4Amount.length; i++) {
+                if (parseFloat(Allt4Amount[i].value)) {
+                    tot4 += parseFloat(Allt4Amount[i].value);
                 }
             }
-            document.getElementById("totalt4Amount").value = tot.toFixed(5);
-        }
+            document.getElementById("totalt4Amount").value = tot4.toFixed(2);
 
-        function findTotalt2Amount() {
-            var arr = document.getElementsByName("t2Amount[]");
-            var tot = 0;
-            for (var i = 0; i < arr.length; i++) {
-                if (parseFloat(arr[i].value)) {
-                    tot += parseFloat(arr[i].value);
+
+            // find total t2amount
+            var Allt2Amount = document.getElementsByName("t2Amount[]");
+            var tot5 = 0;
+            for (var i = 0; i < Allt2Amount.length; i++) {
+                if (parseFloat(Allt2Amount[i].value)) {
+                    tot5 += parseFloat(Allt2Amount[i].value);
                 }
             }
-            document.getElementById("totalt2Amount").value = tot.toFixed(5);
-        }
+            document.getElementById("totalt2Amount").value = tot5.toFixed(2);
 
-        function findTotalAmount() {
-            var arr = document.getElementsByName("totalItemsDiscount[]");
-            var tot = 0;
-            for (var i = 0; i < arr.length; i++) {
-                if (parseFloat(arr[i].value)) {
-                    tot += parseFloat(arr[i].value);
+
+            // findt total Amount
+
+            var allTotalItemsDiscount = document.getElementsByName("totalItemsDiscount[]");
+            var tot6 = 0;
+            for (var i = 0; i < allTotalItemsDiscount.length; i++) {
+                if (parseFloat(allTotalItemsDiscount[i].value)) {
+                    tot6 += parseFloat(allTotalItemsDiscount[i].value);
                 }
             }
-            document.getElementById("totalAmount").value = tot.toFixed(5);
-        }
+            document.getElementById("totalAmount").value = tot6.toFixed(2);
 
-        function findTotalItemsDiscountAmount() {
-            var arr = document.getElementsByName("itemsDiscount[]");
-            var tot = 0;
-            for (var i = 0; i < arr.length; i++) {
-                if (parseFloat(arr[i].value)) {
-                    tot += parseFloat(arr[i].value);
+
+
+            // find total items discount
+            var totalItemsDisc = document.getElementsByName("itemsDiscount[]");
+            var tot7 = 0;
+            for (var i = 0; i < totalItemsDisc.length; i++) {
+                if (parseFloat(totalItemsDisc[i].value)) {
+                    tot7 += parseFloat(totalItemsDisc[i].value);
                 }
             }
-            document.getElementById("totalItemsDiscountAmount").value = tot.toFixed(5);
+            document.getElementById("totalItemsDiscountAmount").value = tot7.toFixed(2);
+
+            //extra discount
+
+            var ExtraDiscount = document.getElementById('ExtraDiscount');
+            var totalAmountOfDiscount = document.getElementById("totalAmount");
+
+            document.getElementById("totalAmount2").value = (totalAmountOfDiscount.value - ExtraDiscount.value).toFixed(2);
+
+            document.getElementById('totalAmount2Dollar') = document.getElementById("totalAmount2").value / currency
+
+            // this is for fill description
+            var DescFill = document.getElementById("itemCode");
+            var FinalText = DescFill.options[DescFill.selectedIndex].text;
+            document.getElementById("inputProductDescription").innerHTML = FinalText;
+
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//       function DollarExchangeCurrency(value) {
+//           // value of currency exchange rate
+//           var x, y, z
+//
+//           var dollar = document.getElementById("amountSold").value;
+//           var x = value * dollar;
+//           document.getElementById("amountEGP").value = x.toFixed(5);
+//       }
+//
+//       function DollarExchangeRate(value) {
+//           // value of currency exchange rate
+//           var x, y, z
+//
+//           var dollar = document.getElementById('currencyExchangeRate').value;
+//           var x = value * dollar;
+//           document.getElementById('amountEGP').value = x.toFixed(5);
+//       }
+//
+//       function operation(value) {
+//           var x, y, z;
+//           var quantity = document.getElementById("quantity").value;
+//           x = value * quantity;
+//           document.getElementById("salesTotal").value = x.toFixed(5);
+//       };
+//
+//
+//
+//       function proccess(value) {
+//           var x, y, z;
+//           var amounEGP = document.getElementById("amountEGP").value;
+//           y = value * amounEGP;
+//           document.getElementById("salesTotal").value = y.toFixed(5);
+//       };
+//
+//       function discount(value) {
+//           var salesTotal, netTotal, z, t2valueEnd, t1Value, rate, t4rate, t4Amount;
+//           salesTotal = document.getElementById("salesTotal").value;
+//           netTotal = salesTotal - value;
+//           netTotalEnd = document.getElementById("netTotal").value = netTotal.toFixed(5);
+//           rate = document.getElementById("rate").value;
+//           t4rate = document.getElementById("t4rate").value;
+//           t2valueEnd = document.getElementById("t2").value =
+//               ((netTotalEnd * rate) / 100).toFixed(5);
+//           t4Amount = document.getElementById("t4Amount").value =
+//               ((netTotal * t4rate) / 100).toFixed(5);
+//       }
+//
+//       function itemsDiscountValue(value) {
+//           var x, netTotal, t1amount, t2amount, t4Amount;
+//           netTotal = document.getElementById("netTotal").value;
+//           t2amount = document.getElementById("t2").value;
+//           t4Amount = document.getElementById("t4Amount").value;
+//           x =
+//               parseFloat(netTotal) +
+//               parseFloat(t2amount) -
+//               parseFloat(t4Amount) -
+//               parseFloat(value);
+//           document.getElementById("totalItemsDiscount").value = x.toFixed(5);
+//       }
+//
+//       function Extradiscount(value) {
+//           var totalDiscount, x;
+//           totalDiscount = document.getElementById("totalAmount").value;
+//           x = totalDiscount - value;
+//           document.getElementById("totalAmount2").value = x.toFixed(5);
+//       }
+//
+//       function findTotalDiscountAmount() {
+//           var arr = document.getElementsByName("discountAmount[]");
+//           var tot = 0;
+//           for (var i = 0; i < arr.length; i++) {
+//               if (parseFloat(arr[i].value)) {
+//                   tot += parseFloat(arr[i].value);
+//               }
+//           }
+//           document.getElementById("totalDiscountAmount").value = tot.toFixed(5);
+//       }
+//
+//       function findTotalSalesAmount() {
+//           var arr = document.getElementsByName("salesTotal[]");
+//           var tot = 0;
+//           for (var i = 0; i < arr.length; i++) {
+//               if (parseFloat(arr[i].value)) {
+//                   tot += parseFloat(arr[i].value);
+//               }
+//           }
+//           document.getElementById("TotalSalesAmount").value = tot.toFixed(5);
+//       }
+//
+//       function findTotalNetAmount() {
+//           var arr = document.getElementsByName("netTotal[]");
+//           var tot = 0;
+//           for (var i = 0; i < arr.length; i++) {
+//               if (parseFloat(arr[i].value)) {
+//                   tot += parseFloat(arr[i].value);
+//               }
+//           }
+//           document.getElementById("TotalNetAmount").value = tot.toFixed(5);
+//       }
+//
+//       function findTotalt4Amount() {
+//           var arr = document.getElementsByName("t4Amount[]");
+//           var tot = 0;
+//           for (var i = 0; i < arr.length; i++) {
+//               if (parseFloat(arr[i].value)) {
+//                   tot += parseFloat(arr[i].value);
+//               }
+//           }
+//           document.getElementById("totalt4Amount").value = tot.toFixed(5);
+//       }
+//
+//       function findTotalt2Amount() {
+//           var arr = document.getElementsByName("t2Amount[]");
+//           var tot = 0;
+//           for (var i = 0; i < arr.length; i++) {
+//               if (parseFloat(arr[i].value)) {
+//                   tot += parseFloat(arr[i].value);
+//               }
+//           }
+//           document.getElementById("totalt2Amount").value = tot.toFixed(5);
+//       }
+//
+//       function findTotalAmount() {
+//           var arr = document.getElementsByName("totalItemsDiscount[]");
+//           var tot = 0;
+//           for (var i = 0; i < arr.length; i++) {
+//               if (parseFloat(arr[i].value)) {
+//                   tot += parseFloat(arr[i].value);
+//               }
+//           }
+//           document.getElementById("totalAmount").value = tot.toFixed(5);
+//       }
+//
+//       function findTotalItemsDiscountAmount() {
+//           var arr = document.getElementsByName("itemsDiscount[]");
+//           var tot = 0;
+//           for (var i = 0; i < arr.length; i++) {
+//               if (parseFloat(arr[i].value)) {
+//                   tot += parseFloat(arr[i].value);
+//               }
+//           }
+//           document.getElementById("totalItemsDiscountAmount").value = tot.toFixed(5);
+//       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

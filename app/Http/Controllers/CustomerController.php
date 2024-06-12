@@ -20,6 +20,10 @@ class CustomerController extends Controller
 
         return view('customer.index', compact('customers'));
     }
+    public function getCompany($id){
+        $company = DB::table('companies2')->where('id',$id)->first();
+        return $company;
+    }
 
     /**
      * Show the form for creating a new resource.

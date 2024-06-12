@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApisettingController as apisetting;
 use App\Http\Controllers\CategoryController as category;
 use App\Http\Controllers\CompanyController as company;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerController as customer;
 use App\Http\Controllers\DocumentController as document;
 use App\Http\Controllers\ImportController as import;
@@ -13,6 +14,7 @@ use App\Http\Controllers\notificationController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\ProductsController as products;
 use App\Http\Controllers\ProfileController as profile;
+use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\RemoteController as remote;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -44,6 +46,10 @@ Route::group(
             Route::get('profile', [profile::class, 'index'])->name('profile');
 
             Route::post('updateprofile', [profile::class, 'update'])->name('updateprofile');
+
+            Route::get('updatemypassword', [profile::class, 'password'])->name('updatemypassword');
+
+            Route::post('updatepassword', [profile::class, 'updatePassword'])->name('updatepassword');
 
             Route::get('submit', [products::class, 'submit'])->name('submit');
 
@@ -159,5 +165,42 @@ Route::group(
 
     });
 
+// get company api
+Route::get('getcompany/{id}', [CustomerController::class, 'getCompany'])->name('getCompany');
+
+// receipt
+Route::get('receipt', [ReceiptController::class, 'sendReceipt'])->name('receipt');
+Route::get('canonical', [ReceiptController::class, 'canonical'])->name('canonical');
+Route::get('sha256', [ReceiptController::class, 'sha256'])->name('hashCanonical');
+Route::get('final', [ReceiptController::class, 'finalStep'])->name('finalStep');
+Route::get('createreceipt', [ReceiptController::class, 'createReceipt'])->name('createreceipt');
+Route::post('sendReceipt', [ReceiptController::class, 'sendReceipt'])->name('sendReceipt');
+Route::get('showRecentReceipt/{id}', [ReceiptController::class, 'showRecentReceipt'])->name('showRecentReceipt');
+Route::get('returnReceipt/{uuid}', [ReceiptController::class, 'returnReceipt'])->name('returnReceipt');
+Route::get('searchReceipt/{id}/{freetext?}/{datefrom?}/{dateto?}/{receiverName?}/{Direction?}/{DocumentTypeCode?}', [ReceiptController::class, 'searchReceipts'])->name('searchReceipts');
+Route::get('sentsubmission', [ReceiptController::class, 'showSubmission'])->name('showSubmission');
+Route::get('returnsubmission/{uuid}', [ReceiptController::class, 'returnSubmission'])->name('returnSubmission');
+
 // Remote Server
 Route::get('updatestatus', [remote::class, 'updatestatus'])->name('updatestatus');
+// draft
+route::post('draft', [manageDoucumentController::class, 'draft'])->name('draft');
+route::get('alldraft', [manageDoucumentController::class, 'showDraft'])->name('showDraft');
+route::post('sendDraft/{id}', [manageDoucumentController::class, 'sendDraftData'])->name('sendDraftData');
+route::get('showdetalils/{id}', [manageDoucumentController::class, 'showDraftDetails'])->name('showDraftDetails');
+route::delete('deletedraft/{id}', [manageDoucumentController::class, 'deleteDraft'])->name('deleteDraft');
+
+//sent
+route::get('sentofdraft', [manageDoucumentController::class, 'SentInvoicesFromDraft'])->name('sentofdraft');
+route::get('searchInSentInv', [manageDoucumentController::class, 'searchInSentInv'])->name('searchInSentInv');
+route::get('showsentdetails/{uuid}', [manageDoucumentController::class, 'showSentInvDetails'])->name('showsentdetails');
+route::delete('deletesent/{id}', [manageDoucumentController::class, 'deleteSentInv'])->name('deleteSentInv');
+Route::get('taxtype/{parentId}', [manageDoucumentController::class, 'getTaxTypes'])->name('getParent');
+
+// get company api
+Route::get('getcompany/{id}', [CustomerController::class, 'getCompany'])->name('getCompany')->middleware('auth');
+
+// credit note
+Route::get('creditNote/{uuid}', [manageDoucumentController::class, 'creditNote'])->name('creditNote');
+
+

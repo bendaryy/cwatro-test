@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Apisetting;
 use App\Models\Details;
+use Illuminate\Http\Request;
 
 class ApisettingController extends Controller
 {
 
     public function index()
     {
-         $setting = Details::first();
+        $setting = Details::first();
 
         return view('apisetting.index', compact('setting'));
     }
-
-
-
 
     /**
      * Show the form for editing the specified resource.
@@ -44,11 +40,15 @@ class ApisettingController extends Controller
 
         $request->validate([
 
-            'client_id'         => 'required',
-            'client_secret'         => 'required',
+            'client_id' => 'required',
+            'client_secret' => 'required',
             'company_id' => 'required',
             'company_name' => 'required',
             'governate' => 'required',
+            'regionCity' => 'required',
+            'street' => 'required',
+            'buildingNumber' => 'required',
+            'issuerType' => 'required',
         ]);
 
         $setting = Details::first();

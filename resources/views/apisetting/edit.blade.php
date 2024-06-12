@@ -67,6 +67,22 @@
                             <label for="inputEmail" class="form-label">@lang("site.commerial_num")</label>
                             <input type="text" required class="form-control" id="inputEmail" name="company_id" value="{{ $setting->company_id }}">
                         </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">المدينة</label>
+                            <input type="text" required class="form-control" id="inputEmail" name="regionCity" value="{{ $setting->regionCity }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">الشارع</label>
+                            <input type="text" required class="form-control" id="inputEmail" name="street" value="{{ $setting->street }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">رقم المبنى</label>
+                            <input type="text" required class="form-control" id="inputEmail" name="buildingNumber" value="{{ $setting->buildingNumber }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">نوع الممول</label>
+                            <input type="text" required class="form-control" id="inputEmail" name="issuerType" value="{{ $setting->issuerType }}">
+                        </div>
 
 
                         <div class="col-12">

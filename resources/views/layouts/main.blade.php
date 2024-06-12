@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="{{ LaravelLocalization::getCurrentLocale() }}"
-    dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}"
+<html lang="{{ LaravelLocalization::getCurrentLocale() }}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}"
     class="color-sidebar sidebarcolor3 color-header headercolor5">
 
 <head>
@@ -55,11 +54,11 @@
                 <div>
                     @if (LaravelLocalization::getCurrentLocale() == 'en')
                         <a href="{{ url('/') }}">
-                            <h4 class="logo-text">الكواترو للتصدير والتوريدات العمومية</h4>
+                            <h4 class="logo-text">{{ auth()->user()->name }}</h4>
                         </a>
                     @else
                         <a href="{{ url('/') }}">
-                            <h4 class="logo-text">الكواترو للتصدير والتوريدات العمومية</h4>
+                            <h4 class="logo-text">{{ auth()->user()->name }}</h4>
                         </a>
                     @endif
 
@@ -126,8 +125,53 @@
                         <li> <a href="{{ route('createInvoice') }}">
                                 <i class="bx bx-right-arrow-alt"></i>اضافة وثيقة بالجنيه</a>
                         </li>
+
                         <li> <a href="{{ route('createInvoiceDollar') }}">
                                 <i class="bx bx-right-arrow-alt"></i>اضافة وثيقة بالدولار</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:;">
+                        <div class="parent-icon"><i class="fadeIn animated bx bx-file"></i>
+                        </div>
+                        <div class="menu-title">الإرسالات و المسودات</div>
+                    </a>
+                    <ul>
+
+                        <li>
+                            <a href="{{ route('showDraft') }}"><i class="bx bx-right-arrow-alt"></i>عرض المسودات</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('sentofdraft') }}"><i class="bx bx-right-arrow-alt"></i>عرض
+                                الإرسالات</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+
+                {{-- الإيصالات --}}
+                <li>
+                    <a href="javascript:;">
+                        <div class="parent-icon"><i class="fadeIn animated bx bx-file"></i>
+                        </div>
+                        <div class="menu-title">الإيصالات</div>
+                    </a>
+                    <ul>
+                        {{-- <li> <a href="{{ route('sentInvoices') }}">
+                                <i class="bx bx-right-arrow-alt"></i>@lang('site.sent_documents')</a>
+                        </li> --}}
+                        <li> <a href="{{ route('showRecentReceipt', '1') }}">
+                                <i class="bx bx-right-arrow-alt"></i>عرض جميع الإيصالات</a>
+                        </li>
+                        <li> <a href="{{ route('createreceipt') }}">
+                                <i class="bx bx-right-arrow-alt"></i>اضافة إيصال جديد</a>
+                        </li>
+                        <li> <a href="{{ route('showSubmission') }}">
+                                <i class="bx bx-right-arrow-alt"></i>الإرسالات</a>
                         </li>
                     </ul>
                 </li>
@@ -148,7 +192,7 @@
                                 <i class="bx bx-right-arrow-alt"></i>تم تقديم طلب لإلغائها</a>
                         </li>
                         <li> <a href="{{ route('allCancell') }}">
-                                <i class="bx bx-right-arrow-alt"></i>تم  إلغائها</a>
+                                <i class="bx bx-right-arrow-alt"></i>تم إلغائها</a>
                         </li>
                         <li> <a href="{{ route('allRejected') }}">
                                 <i class="bx bx-right-arrow-alt"></i>تم رفضها</a>
@@ -161,11 +205,11 @@
                 </li>
 
 
-                  {{-- حالات الوثائق من خلال العملاء --}}
+                {{-- حالات الوثائق من خلال العملاء --}}
 
 
 
- <li>
+                <li>
                     <a href="javascript:;">
                         <div class="parent-icon"><i class="fadeIn animated bx bx-file"></i>
                         </div>
@@ -178,10 +222,10 @@
                         <li> <a href="{{ route('companyAllCancell') }}">
                                 <i class="bx bx-right-arrow-alt"></i>تم الغائها</a>
                         </li>
-                          <li> <a href="{{ route('companyRejected') }}">
+                        <li> <a href="{{ route('companyRejected') }}">
                                 <i class="bx bx-right-arrow-alt"></i>تم رفضها</a>
                         </li>
-                          <li> <a href="{{ route('requestCompanyRejected') }}">
+                        <li> <a href="{{ route('requestCompanyRejected') }}">
                                 <i class="bx bx-right-arrow-alt"></i>تم تقديم طلب لرفضها</a>
                         </li>
 
@@ -309,8 +353,8 @@
                         </ul> --}}
                     </div>
                     <div class="user-box dropdown">
-                        <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ asset('images/' . Auth::user()->avatar) }}" class="user-img"
                                 alt="user avatar">
                             <div class="user-info ps-3">
@@ -322,6 +366,14 @@
                             <li><a class="dropdown-item" href="{{ route('profile') }}"><i
                                         class="bx bx-user"></i><span>
                                         @lang('site.profile')</span></a>
+                            </li>
+
+                            <li>
+                                <div class="dropdown-divider mb-0"></div>
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('updatemypassword') }}"><i
+                                        class="bx bx-user"></i><span>
+                                        تغيير الرقم السرى</span></a>
                             </li>
 
                             <li>
@@ -360,8 +412,8 @@
                 class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2021. Developed By <a href="" target=".blank">الكواترو للتصدير
-                    والتوريدات العمومية Team</a></p>
+            <p class="mb-0">Copyright © 2021. Developed By <a href="" target=".blank">
+                    {{ auth()->user()->name }} </a></p>
         </footer>
     </div>
     @if (session()->has('modal'))
@@ -414,12 +466,23 @@
 
     @if (session()->has('message'))
         <script>
-            Lobibox.notify('info', {
+            Lobibox.notify('success', {
                 pauseDelayOnHover: true,
                 continueDelayOnInactiveTab: false,
                 position: 'top right',
                 icon: 'bx bx-info-circle',
                 msg: "{{ session()->get('message') }}"
+            });
+        </script>
+    @endif
+    @if (session()->has('error'))
+        <script>
+            Lobibox.notify('error', {
+                pauseDelayOnHover: true,
+                continueDelayOnInactiveTab: false,
+                position: 'top right',
+                icon: 'bx bx-info-circle',
+                msg: "{{ session()->get('error') }}"
             });
         </script>
     @endif
