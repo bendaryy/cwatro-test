@@ -1,0 +1,94 @@
+{"documents":[{
+  "issuer": {
+    "address": {
+      "branchID": "0",
+      "country": "EG",
+      "governate": "القاهرة",
+      "regionCity": "القاهرة الجديدة",
+      "street": "النرجس 3",
+      "buildingNumber": "فيلا 45"
+    },
+    "type": "B",
+    "id": "410973742",
+    "name": "مكتب احمد فؤاد الوطن أمين"
+  },
+  "receiver": {
+    "address": {
+      "country": "EG",
+      "governate": "-",
+      "regionCity": "-",
+      "street": "29 شارع نصر احمد ذكي متفرع من شارع البطراوي عباس العقاد القاهرة",
+      "buildingNumber": "-"
+    },
+    "type": "B",
+    "id": "205042627",
+    "name": "شركة اسبا للمشروعات السياحية والفنادق العائمة"
+  },
+  "documentType": "I",
+  "documentTypeVersion": "0.9",
+  "dateTimeIssued": "2021-09-30T08:27:38Z",
+  "taxpayerActivityCode": "6920",
+  "internalID": null,
+  "invoiceLines": [
+    {
+      "description": "dsfasdfasdf",
+      "itemType": "EGS",
+      "itemCode": "EG-410973742-100",
+      "internalCode": "100",
+      "unitType": "EA",
+      "quantity": 1,
+      "unitValue": {
+        "currencySold": "EGP",
+        "amountSold": 0,
+        "currencyExchangeRate": 0,
+        "amountEGP": 100000
+      },
+      "salesTotal": 100000,
+      "discount": {
+        "rate": 0,
+        "amount": 0
+      },
+      "netTotal": 100000,
+      "valueDifference": 0,
+      "taxableItems": [
+        {
+          "taxType": "T4",
+          "amount": 5000,
+          "subType": "W004",
+          "rate": 5
+        },
+        {
+          "taxType": "T2",
+          "amount": 10000,
+          "subType": "TBL01",
+          "rate": 10
+        }
+      ],
+      "totalTaxableFees": 0,
+      "itemsDiscount": 0,
+      "total": 105000
+    }
+  ],
+  "totalSalesAmount": 100000,
+  "totalDiscountAmount": 0,
+  "netAmount": 100000,
+  "taxTotals": [
+    {
+      "taxType": "T4",
+      "amount": 5000
+    },
+    {
+      "taxType": "T2",
+      "amount": 10000
+    }
+  ],
+  "totalItemsDiscountAmount": 0,
+  "extraDiscountAmount": 0,
+  "totalAmount": 105000,
+  "signatures": [
+    {
+      "signatureType": "I",
+      "value": "ANY"
+    }
+  ]
+}]}
