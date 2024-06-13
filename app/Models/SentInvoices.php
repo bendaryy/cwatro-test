@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SentInvoices extends Model
 {
     protected $table = 'sentInvoices';
-      protected $casts = [
+
+    protected $casts = [
         'jsondata' => 'json'
     ];
+
     use HasFactory;
 }

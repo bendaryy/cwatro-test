@@ -68,7 +68,7 @@ class manageDoucumentController extends Controller
 
     // this is for show recieved inovices
 
-    public function receivedInvoices($id)
+    public function receivedInvoices()
     {
         $response = Http::asForm()->post("$this->url1/connect/token", [
             'grant_type' => 'client_credentials',
@@ -79,14 +79,14 @@ class manageDoucumentController extends Controller
 
         $showInvoices = Http::withHeaders([
             'Authorization' => 'Bearer ' . $response['access_token'],
-        ])->get("$this->url2/api/v1.0/documents/recent?pageNo=$id&pageSize=100");
+        ])->get("$this->url2/api/v1.0/documents/recent?pageNo=1&pageSize=100");
 
         $allInvoices = $showInvoices['result'];
 
         $allMeta = $showInvoices['metadata'];
         $taxId = auth()->user()->details->company_id;
 
-        return view('invoices.receivedInvoices', compact('allInvoices', 'allMeta', 'taxId', 'id'));
+        return view('invoices.receivedInvoices', compact('allInvoices', 'allMeta', 'taxId'));
     }
 
     public function invoiceDollar(Request $request)
